@@ -12,9 +12,21 @@ export default {
   },
   methods: {
     getMovies() {
-      axios.get('https://api.themoviedb.org/3/search/movie?api_key=b882c94710cf2e3b8def0b4cf3cc24e3&query=ritorno+al+futuro')
+      axios.get('https://api.themoviedb.org/3/discover/movie', {
+        params: {
+          include_adult: false,
+          include_video: false,
+          language: 'en-US',
+          page: 1,
+          sort_by: 'popularity.desc'
+        },
+        headers: {
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiODgyYzk0NzEwY2YyZTNiOGRlZjBiNGNmM2NjMjRlMyIsInN1YiI6IjY0YjdiMDM2ZDM5OWU2MDEyZGI0YzhiMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GQ_okPEolVHuhU2s9oD8Q2ElH5ZDNYT-hY0VQXjoIs8',
+          Accept: 'application/json'
+        }
+      })
       .then((response) => {
-        console.log(response.data)
+        console.log(response)
         this.store.movies = response.data.results
         console.log( this.store.movies)
       })
