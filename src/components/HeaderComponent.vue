@@ -1,8 +1,10 @@
 <script >
+import { store } from '../store.js'
+
 export default {
   data() {
     return {
-
+        store
     }
   }
 }
@@ -19,8 +21,8 @@ export default {
                         </h1>
                     </div>
                     <div class="col-auto">
-                        <input type="text" placeholder="Search">
-                        <button>Go</button>
+                        <input v-model="store.searchText" type="text" placeholder="Search">
+                        <button @click="$emit('filter')">Go</button>
                     </div>
                 </div>
             </div>

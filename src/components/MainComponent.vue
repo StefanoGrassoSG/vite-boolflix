@@ -14,38 +14,38 @@ export default {
     <main>
         <div class="container">
             <div class="row">
-                <div class="col d-flex" v-for="(singleMovie, i) in store.movies[0]" :key="i">
-                    <div class="single-card">
+                <div class="col-3" v-for="(singleMovie, i) in store.movies" :key="i">
+                    <div class="single-card h-100">
                         <div class="title">
-                            <span>
+                            <span class="fw-bold">
                                 Title:
                             </span>
                             <span>
-                               {{ store.movies[0][i].title }}
+                               {{ store.movies[i].title }}
                             </span>
                         </div>
                         <div class="original-title">
-                            <span>
+                            <span class="fw-bold">
                                 Original Title:
                             </span>
                             <span>
-                                {{ store.movies[0][i].original_title }}
+                                {{ store.movies[i].original_title }}
                             </span>
                         </div>
                         <div class="score">
-                            <span>
+                            <span class="fw-bold">
                                 Vote:
                             </span>
                             <span>
-                                {{ store.movies[0][i].vote_average }}
+                                {{ store.movies[i].vote_average }}
                             </span>
                         </div>
                         <div class="overview">
-                            <span>
+                            <span class="fw-bold">
                                 Overview:
                             </span>
                             <span>
-                                {{ store.movies[0][i].overview }}
+                                {{ store.movies[i].overview }}
                             </span>
                         </div>
                     </div>
