@@ -78,4 +78,8 @@ export default {
 
 <style lang="scss">
 @use "assets/scss/main";
+
+* {
+  font-family: 'Bebas Neue', sans-serif;
+}
 </style>
