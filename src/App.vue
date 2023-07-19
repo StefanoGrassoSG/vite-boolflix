@@ -20,16 +20,26 @@ export default {
       })
     },
     getFilterResult() {
+      Promise.all([
       axios.get('https://api.themoviedb.org/3/search/movie',
       {
         params:{
           api_key: 'b882c94710cf2e3b8def0b4cf3cc24e3',
           query: this.store.searchText
         }
+      }),
+      axios.get('https://api.themoviedb.org/3/search/tv',
+      {
+        params:{
+          api_key: 'b882c94710cf2e3b8def0b4cf3cc24e3',
+          query: this.store.searchText
+        }
       })
-      .then((data) => {
-        this.store.movies = data.data.results
-        console.log(this.store.movies)
+      ])
+      .then((response) => {
+        const dataFromFirstAPI = response[0].data.results;
+        const dataFromSecondAPI = response[1].data.results;
+        this.store.movies = [...dataFromFirstAPI, ...dataFromSecondAPI];
       })
     }
   },

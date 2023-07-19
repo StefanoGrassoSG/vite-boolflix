@@ -1,6 +1,7 @@
 <script >
 import { store } from '../store.js'
 
+
 export default {
   data() {
     return {
@@ -77,5 +78,6 @@ export default {
 <style lang="scss" scoped>
 .single-card {
     border: 5px solid black;
+    padding: 15px;
 }
 </style>
