@@ -19,6 +19,9 @@ export default {
         else if(element.original_language == 'es') {
             return '<span class="fi fi-es"></span>';
         }
+    },
+    convertNumber(vote) {
+        return Math.floor(vote.vote_average / 2);
     }
   }
 }
@@ -60,7 +63,15 @@ export default {
                                 Vote:
                             </span>
                             <span>
-                                {{ singleMovie.vote_average }}
+                                <template v-for="n in 5" :key="n">
+                                <i
+                                    :class="{
+                                    'fas fa-star text-warning': n <=  convertNumber(singleMovie),
+                                    'far fa-star': n > convertNumber(singleMovie)
+                                    }"
+                                    class="star-icon"
+                                ></i>
+                                </template>
                             </span>
                         </div>
                         <div class="overview">
