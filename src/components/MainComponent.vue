@@ -6,6 +6,19 @@ export default {
     return {
         store
     }
+  },
+  methods: {
+    stringToFlag(element) {
+        if(element.original_language == 'it') {
+            return '<span class="fi fi-it"></span>';
+        }
+        else if(element.original_language == 'en') {
+            return '<span class="fi fi-gb"></span>';
+        }
+        else if(element.original_language == 'es') {
+            return '<span class="fi fi-es"></span>';
+        }
+    }
   }
 }
 </script>
@@ -36,16 +49,14 @@ export default {
                             <span class="fw-bold">
                                 Language:
                             </span>
-                            <span>
-                                {{ singleMovie.original_language }}
-                            </span>
+                            <span v-html="stringToFlag(singleMovie)"></span>
                         </div>
                         <div class="score">
                             <span class="fw-bold">
                                 Vote:
                             </span>
                             <span>
-                                {{ store.movies[i].vote_average }}
+                                {{ singleMovie.vote_average }}
                             </span>
                         </div>
                         <div class="overview">
@@ -53,7 +64,7 @@ export default {
                                 Overview:
                             </span>
                             <span>
-                                {{ store.movies[i].overview }}
+                                {{ singleMovie.overview }}
                             </span>
                         </div>
                     </div>
