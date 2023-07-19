@@ -1,4 +1,6 @@
 <script >
+import HeaderComponent from './components/HeaderComponent.vue';
+
 export default {
   data() {
     return {
@@ -9,16 +11,14 @@ export default {
 
   },
   components: {
-
+    HeaderComponent
   }
 }
 </script>
 
 <template>
 
-  <header>
-    HEADER
-  </header>
+  <HeaderComponent />
 
   <main>
     MAIN
@@ -29,6 +29,6 @@ export default {
   </footer>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use "assets/scss/main";
 </style>
