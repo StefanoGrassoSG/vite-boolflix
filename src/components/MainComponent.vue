@@ -30,6 +30,9 @@ export default {
             <div class="row">
                 <div class="col-3" v-for="(singleMovie, i) in store.movies" :key="i">
                     <div class="single-card h-100">
+                        <div class="img">
+                            <img class="img-fluid" :src="`https://image.tmdb.org/t/p/w342/${singleMovie.poster_path}`" alt="">
+                        </div>
                         <div class="title">
                             <span class="fw-bold">
                                 Title:
@@ -78,6 +81,5 @@ export default {
 <style lang="scss" scoped>
 .single-card {
     border: 5px solid black;
-    padding: 15px;
 }
 </style>
