@@ -21,7 +21,7 @@ export default {
                                 Title:
                             </span>
                             <span>
-                               {{ store.movies[i].title }}
+                               {{ singleMovie.title }}
                             </span>
                         </div>
                         <div class="original-title">
@@ -29,7 +29,15 @@ export default {
                                 Original Title:
                             </span>
                             <span>
-                                {{ store.movies[i].original_title }}
+                                {{ singleMovie.original_title }}
+                            </span>
+                        </div>
+                        <div class="language" v-if="singleMovie.original_language != null">
+                            <span class="fw-bold">
+                                Language:
+                            </span>
+                            <span>
+                                {{ singleMovie.original_language }}
                             </span>
                         </div>
                         <div class="score">
