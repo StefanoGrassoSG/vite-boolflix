@@ -7,6 +7,7 @@ export default {
         it: 'it',
         en: 'gb',
         es: 'es',
+        pt: 'br'
     },
     }
  },
@@ -54,7 +55,7 @@ export default {
                     Title:
                 </span>
                 <span>
-                    {{ multiData.title }}
+                    {{ multiData.title ?? multiData.name }}
                 </span>
             </div>
             <div class="original-title">
@@ -62,7 +63,7 @@ export default {
                     Original Title:
                 </span>
                 <span>
-                    {{ multiData.original_title }}
+                    {{ multiData.original_title ?? multiData.original_name }}
                 </span>
             </div>
             <div class="language" v-if="multiData.original_language != null">
@@ -87,7 +88,7 @@ export default {
                     </template>
                 </span>
             </div>
-            <div class="overview">
+            <div class="overview" v-if="multiData.overview != ''">
                 <span class="fw-bold">
                     Overview:
                 </span>
@@ -100,4 +101,21 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+.col-2 {
+    margin-bottom: 15px;
+    max-height: 450px;
+
+    .single-card {
+    border: 5px solid black;
+    cursor: pointer;
+    .info {
+        padding: 10px 10px 0px 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 10; /* Imposta il numero massimo di righe desiderato */
+        -webkit-box-orient: vertical;
+    }
+}
+}
 </style>

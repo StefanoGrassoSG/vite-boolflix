@@ -21,7 +21,7 @@ export default {
                             <div>
                                 <div class="text-danger d-flex align-items-center">
                                     <div class="fs-2 ms-4">
-                                        Sfoglia
+                                        Browse
                                     </div>
                                     <div>
                                         <i class="fa-solid fa-sort-down fa-2xs text text-danger ms-2"></i>

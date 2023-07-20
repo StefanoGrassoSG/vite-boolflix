@@ -31,7 +31,28 @@ export default {
         console.log( this.store.movies)
       })
     },
+    getSeries() {
+      axios.get('https://api.themoviedb.org/3/discover/tv', {
+        params: {
+          include_adult: false,
+          include_video: false,
+          language: 'en-US',
+          page: 1,
+          sort_by: 'vote_count.desc'
+        },
+        headers: {
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiODgyYzk0NzEwY2YyZTNiOGRlZjBiNGNmM2NjMjRlMyIsInN1YiI6IjY0YjdiMDM2ZDM5OWU2MDEyZGI0YzhiMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GQ_okPEolVHuhU2s9oD8Q2ElH5ZDNYT-hY0VQXjoIs8',
+          Accept: 'application/json'
+        }
+      })
+      .then((response) => {
+        console.log(response)
+        this.store.series = response.data.results
+        console.log( this.store.series)
+      })
+    },
     getFilterResult() {
+      this.store.titleUpdate = true;
       Promise.all([
       axios.get('https://api.themoviedb.org/3/search/movie',
       {
@@ -61,7 +82,8 @@ export default {
     MainComponent
   },
   created() {
-    this.getMovies()
+    this.getMovies(),
+    this.getSeries()
   }
 }
 </script>
