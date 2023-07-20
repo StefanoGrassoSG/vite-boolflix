@@ -74,7 +74,36 @@ export default {
         const dataFromSecondAPI = response[1].data.results;
         this.store.movies = dataFromFirstAPI;
         this.store.series = dataFromSecondAPI;
+        console.log(this.store.series)
       })
+    },
+    getGenere() {
+      this.getGeneretv()
+      this.store.drop = true
+      axios.get('https://api.themoviedb.org/3/genre/movie/list', {
+        params: {
+          api_key: 'b882c94710cf2e3b8def0b4cf3cc24e3'
+        }
+      }).then((response) => {
+          this.store.generi = response.data
+          console.log(this.store.generi)
+     })
+    },
+    getGeneretv() {
+      this.store.drop = true
+      axios.get('https://api.themoviedb.org/3/genre/tv/list', {
+        params: {
+          api_key: 'b882c94710cf2e3b8def0b4cf3cc24e3'
+        }
+      }).then((response) => {
+          this.store.generitv = response.data
+          console.log(this.store.generitv)
+     })
+    },
+    closeDrop() {
+      if(this.store.drop == true) {
+        this.store.drop = false
+      }
     }
   },
   components: {
@@ -90,9 +119,9 @@ export default {
 
 <template>
 
-  <HeaderComponent @filter="getFilterResult"/>
+  <HeaderComponent @filter="getFilterResult" @getGenere="getGenere"/>
 
-  <MainComponent />
+  <MainComponent @close="closeDrop"/>
 
   <footer>
     FOOTER

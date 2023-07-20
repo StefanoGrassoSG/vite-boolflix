@@ -1,11 +1,15 @@
 <script >
 import { store } from '../store.js'
+import DropdownComponent from './DropdownComponent.vue';
 
 export default {
   data() {
     return {
         store
     }
+  },
+  components: {
+    DropdownComponent
   }
 }
 </script>
@@ -19,14 +23,15 @@ export default {
                         <div class="logo-container d-flex align-items-center">
                             <img class="img-fluid" src="../assets/img/logovero.png" alt="">
                             <div>
-                                <div class="text-danger d-flex align-items-center">
+                                <div @click="$emit('getGenere')" class="browse text-danger d-flex align-items-center">
                                     <div class="fs-2 ms-4">
                                         Browse
                                     </div>
-                                    <div>
-                                        <i class="fa-solid fa-sort-down fa-2xs text text-danger ms-2"></i>
+                                    <div class="arrow">
+                                        <i class="fa-solid fa-sort-down fa-2xs ms-2"></i>
                                     </div>  
                                 </div>
+                                <DropdownComponent />
                             </div>
                         </div>
                     </div>
@@ -56,6 +61,15 @@ header {
 
         .logo-container {
             width: 250px;
+
+            .browse {
+                cursor: pointer;
+                user-select: none;
+            }
+
+            .browse:hover {
+                color: white !important;
+            }
         }
 }
 </style>
