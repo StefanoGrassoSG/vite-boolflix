@@ -46,8 +46,8 @@ export default {
 
 <template>
    <div class="single-card bg-white h-100" @mouseenter="showInfo(index)" @mouseleave="hideInfo()">
-        <div class="img" v-if="selectedCardIndex !== index">
-            <img class="img-fluid" :src="`https://image.tmdb.org/t/p/w342/${multiData.poster_path}`" alt="">
+        <div class="img h-100" v-if="selectedCardIndex !== index">
+            <img class="img-fluid h-100" :src="`https://image.tmdb.org/t/p/w342/${multiData.poster_path}`" alt="">
         </div>
         <div class="info" v-if="selectedCardIndex === index">
             <div class="title">

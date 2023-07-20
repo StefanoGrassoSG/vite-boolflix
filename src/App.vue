@@ -52,6 +52,7 @@ export default {
       })
     },
     getFilterResult() {
+      this.store.onlySelectedGenere = false
       this.store.titleUpdate = true;
       Promise.all([
       axios.get('https://api.themoviedb.org/3/search/movie',

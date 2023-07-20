@@ -1,10 +1,30 @@
 <script >
 import { store } from '../store.js'
+import axios from 'axios';
 
 export default {
   data() {
     return {
         store
+    }
+  },
+  methods: {
+    getMoviesByGenre(id, name) {
+        this.store.onlySelectedGenere = true
+        this.store.selectedGenere = name
+        axios.get('https://api.themoviedb.org/3/discover/movie', {
+            params: {
+                api_key: 'b882c94710cf2e3b8def0b4cf3cc24e3',
+                with_genres: id,
+            }
+        })
+        .then((response) => {
+            console.log(response.data)
+            this.store.movies = response.data.results
+        })
+    },
+    closeDrop() {
+        this.store.drop = false
     }
   }
 }
@@ -25,7 +45,7 @@ export default {
         </div>
         <div class="list d-flex">
             <ul>
-                <li v-for="(singleGenere, i) in store.generi.genres" :key="i">
+                <li v-for="(singleGenere, i) in store.generi.genres" :key="i" @click="getMoviesByGenre(singleGenere.id, singleGenere.name), closeDrop()">
                     {{ singleGenere.name }}
                 </li>
             </ul>

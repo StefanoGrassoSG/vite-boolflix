@@ -7,5 +7,7 @@ export const store = reactive({
     generitv: [],
     searchText:'',
     titleUpdate : false,
-    drop: false
+    drop: false,
+    onlySelectedGenere: false,
+    selectedGenere: ''
 })

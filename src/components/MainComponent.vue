@@ -17,18 +17,25 @@ export default {
 <template>
     <main @click="$emit('close')">
         <div class="container">
-            <h2 v-if="store.titleUpdate == false">
+            <div class="movies">
+                <h2 v-if="store.titleUpdate == false && store.onlySelectedGenere == false">
                Popular Movies
             </h2>
+            <h2 v-else-if="store.onlySelectedGenere == true">
+                {{ this.store.selectedGenere }} Movies
+            </h2>
             <h2 v-else>
-                Movies
+               Movies
             </h2>
             <div class="row">
                 <div class="col-2" v-for="(singleMovie, i) in store.movies" :key="i">
                     <singleMultimedia :multiData="singleMovie" :index="i"/>
                 </div>
             </div>
-            <h2 class="mt-3" v-if="store.titleUpdate == false && store.series.length > 1">
+            </div>
+
+            <div class="series" v-if="store.onlySelectedGenere == false">
+                <h2 class="mt-3" v-if="store.titleUpdate == false && store.series.length > 1">
                Popular Series
             </h2>
             <h2 v-else v-if="store.series.length > 0">
@@ -38,6 +45,7 @@ export default {
                 <div class="col-2" v-for="(singleSerie, i) in store.series" :key="i">
                     <singleMultimedia :multiData="singleSerie" :index="i"/>
                 </div>
+            </div>
             </div>
         </div>
     </main>
