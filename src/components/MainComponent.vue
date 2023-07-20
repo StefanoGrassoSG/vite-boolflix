@@ -16,7 +16,7 @@ export default {
 
 <template>
     <main @click="$emit('close')">
-        <div class="container">
+        <div class="container" :style="{ overflow: this.store.containeroverflow }">
             <div class="movies">
                 <h2 v-if="store.titleUpdate == false && store.onlySelectedGenere == false">
                Popular Movies
@@ -27,7 +27,7 @@ export default {
             <h2 v-else>
                Movies
             </h2>
-            <div class="row">
+            <div class="row" :style="{ flexWrap: this.store.rowFlexWrap }">
                 <div class="col-2" v-for="(singleMovie, i) in store.movies" :key="i">
                     <singleMultimedia :multiData="singleMovie" :index="i"/>
                 </div>

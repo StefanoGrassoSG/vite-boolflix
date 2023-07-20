@@ -25,6 +25,10 @@ export default {
     },
     closeDrop() {
         this.store.drop = false
+    },
+    changeLayout() {
+        this.store.containerOverflow = 'none';
+        this.store.rowFlexWrap = 'wrap';
     }
   }
 }
@@ -45,7 +49,7 @@ export default {
         </div>
         <div class="list d-flex">
             <ul>
-                <li v-for="(singleGenere, i) in store.generi.genres" :key="i" @click="getMoviesByGenre(singleGenere.id, singleGenere.name), closeDrop()">
+                <li v-for="(singleGenere, i) in store.generi.genres" :key="i" @click="getMoviesByGenre(singleGenere.id, singleGenere.name), closeDrop(), changeLayout()">
                     {{ singleGenere.name }}
                 </li>
             </ul>

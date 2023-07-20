@@ -9,5 +9,7 @@ export const store = reactive({
     titleUpdate : false,
     drop: false,
     onlySelectedGenere: false,
-    selectedGenere: ''
+    selectedGenere: '',
+    containerOverflow: 'hidden', 
+    rowFlexWrap: 'nowrap'
 })
