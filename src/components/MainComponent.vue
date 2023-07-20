@@ -1,5 +1,10 @@
 <script >
 import { store } from '../store.js'
+const languageToFlagMapping = {
+    it: 'it',
+    en: 'gb',
+    es: 'es',
+    };
 
 export default {
   data() {
@@ -10,15 +15,13 @@ export default {
   },
   methods: {
     stringToFlag(element) {
-        if(element.original_language == 'it') {
-            return '<span class="fi fi-it"></span>';
-        }
-        else if(element.original_language == 'en') {
-            return '<span class="fi fi-gb"></span>';
-        }
-        else if(element.original_language == 'es') {
-            return '<span class="fi fi-es"></span>';
-        }
+      const flagCode = languageToFlagMapping[element.original_language];
+
+      if (flagCode) {
+        return `<span class="fi fi-${flagCode}"></span>`;
+      }
+
+      return '<span>Unknown Language</span>';
     },
     convertNumber(vote) {
         return Math.floor(vote.vote_average / 2);
