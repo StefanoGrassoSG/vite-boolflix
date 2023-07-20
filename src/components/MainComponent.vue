@@ -1,21 +1,22 @@
 <script >
 import { store } from '../store.js'
-const languageToFlagMapping = {
-    it: 'it',
-    en: 'gb',
-    es: 'es',
-    };
+import singleMultimedia from './singleMultimedia.vue';
 
 export default {
   data() {
     return {
         store,
-        selectedCardIndex: -1
+        selectedCardIndex: -1,
+        languageToFlagMapping: {
+        it: 'it',
+        en: 'gb',
+        es: 'es',
+    },
     }
   },
   methods: {
     stringToFlag(element) {
-      const flagCode = languageToFlagMapping[element.original_language];
+      const flagCode = this.languageToFlagMapping[element.original_language];
 
       if (flagCode) {
         return `<span class="fi fi-${flagCode}"></span>`;
@@ -32,6 +33,9 @@ export default {
     hideInfo() {
       this.selectedCardIndex = -1;
     }
+  },
+  components: {
+    singleMultimedia
   }
 }
 </script>
@@ -39,61 +43,12 @@ export default {
 <template>
     <main>
         <div class="container">
+            <h1>
+               Popular Movies
+            </h1>
             <div class="row">
                 <div class="col-3" v-for="(singleMovie, i) in store.movies" :key="i">
-                    <div class="single-card bg-white h-100" @mouseenter="showInfo(i)" @mouseleave="hideInfo()">
-                        <div class="img" v-if="selectedCardIndex !== i">
-                            <img class="img-fluid" :src="`https://image.tmdb.org/t/p/w342/${singleMovie.poster_path}`" alt="">
-                        </div>
-                        <div class="info" v-if="selectedCardIndex === i">
-                            <div class="title">
-                                <span class="fw-bold">
-                                    Title:
-                                </span>
-                                <span>
-                                    {{ singleMovie.title }}
-                                </span>
-                            </div>
-                            <div class="original-title">
-                                <span class="fw-bold">
-                                    Original Title:
-                                </span>
-                                <span>
-                                    {{ singleMovie.original_title }}
-                                </span>
-                            </div>
-                            <div class="language" v-if="singleMovie.original_language != null">
-                                <span class="fw-bold">
-                                    Language:
-                                </span>
-                                <span v-html="stringToFlag(singleMovie)"></span>
-                            </div>
-                            <div class="score">
-                                <span class="fw-bold">
-                                    Vote:
-                                </span>
-                                <span>
-                                    <template v-for="number in 5" :key="number">
-                                    <i
-                                        :class="{
-                                        'fas fa-star text-warning': number <=  convertNumber(singleMovie),
-                                        'far fa-star': number > convertNumber(singleMovie)
-                                        }"
-                                        class="star-icon"
-                                    ></i>
-                                    </template>
-                                </span>
-                            </div>
-                            <div class="overview">
-                                <span class="fw-bold">
-                                    Overview:
-                                </span>
-                                <span>
-                                    {{ singleMovie.overview }}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                    <singleMultimedia :multiData="singleMovie" :index="i"/>
                 </div>
             </div>
         </div>
@@ -101,6 +56,14 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+.container {
+     overflow: hidden;
+     
+    .row {
+        flex-wrap: nowrap;
+    }
+}
 
 main {
     background-color: black;

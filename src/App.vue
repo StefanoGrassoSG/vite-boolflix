@@ -51,7 +51,8 @@ export default {
       .then((response) => {
         const dataFromFirstAPI = response[0].data.results;
         const dataFromSecondAPI = response[1].data.results;
-        this.store.movies = [...dataFromFirstAPI, ...dataFromSecondAPI];
+        this.store.movies = dataFromFirstAPI;
+        this.store.series = dataFromSecondAPI;
       })
     }
   },
