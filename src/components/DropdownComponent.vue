@@ -23,6 +23,20 @@ export default {
             this.store.movies = response.data.results
         })
     },
+    getSeriesByGenre(id, name) {
+        this.store.selectedSeries = true
+        this.store.selectedGenere = name
+        axios.get('https://api.themoviedb.org/3/discover/tv', {
+            params: {
+                api_key: 'b882c94710cf2e3b8def0b4cf3cc24e3',
+                with_genres: id,
+            }
+        })
+        .then((response) => {
+            console.log(response.data)
+            this.store.series = response.data.results
+        })
+    },
     closeDrop() {
         this.store.drop = false
     },
@@ -54,7 +68,7 @@ export default {
                 </li>
             </ul>
             <ul>
-                <li v-for="(singlegenere, j) in store.generitv.genres" :key="j">
+                <li v-for="(singlegenere, j) in store.generitv.genres" :key="j" @click="getSeriesByGenre(singlegenere.id, singlegenere.name), closeDrop(), changeLayout()">
                     {{ singlegenere.name }}
                 </li>
             </ul>

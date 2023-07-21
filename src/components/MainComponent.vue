@@ -17,7 +17,7 @@ export default {
 <template>
     <main @click="$emit('close')">
         <div class="container" :style="{ overflow: this.store.containeroverflow }">
-            <div class="movies">
+            <div class="movies" v-if="store.selectedSeries == false">
                 <h2 v-if="store.titleUpdate == false && store.onlySelectedGenere == false">
                Popular Movies
             </h2>
@@ -35,17 +35,20 @@ export default {
             </div>
 
             <div class="series" v-if="store.onlySelectedGenere == false">
-                <h2 class="mt-3" v-if="store.titleUpdate == false && store.series.length > 1">
-               Popular Series
-            </h2>
-            <h2 v-else v-if="store.series.length > 0">
-                Series
-            </h2>
-            <div class="row">
-                <div class="col-2" v-for="(singleSerie, i) in store.series" :key="i">
-                    <singleMultimedia :multiData="singleSerie" :index="i"/>
+                <h2 class="mt-3" v-if="store.titleUpdate == false && store.series.length > 1 && this.store.selectedSeries == false">
+                     Popular Series
+                </h2>
+                <h2 v-else-if="this.store.selectedSeries == true"> 
+                    {{ this.store.selectedGenere }} Series
+                </h2>
+                <h2 v-else v-if="store.series.length > 0">
+                     Series
+                </h2>
+                <div class="row" :style="{ flexWrap: this.store.rowFlexWrap }">
+                    <div class="col-2" v-for="(singleSerie, i) in store.series" :key="i">
+                        <singleMultimedia :multiData="singleSerie" :index="i"/>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </main>

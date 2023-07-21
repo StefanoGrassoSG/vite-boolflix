@@ -10,6 +10,7 @@ export const store = reactive({
     drop: false,
     onlySelectedGenere: false,
     selectedGenere: '',
+    selectedSeries: '',
     containerOverflow: 'hidden', 
     rowFlexWrap: 'nowrap'
 })
