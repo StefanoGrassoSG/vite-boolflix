@@ -51,7 +51,8 @@ export default {
 <template>
    <div class="single-card bg-white h-100" @click="showInfo(index)">
         <div class="img h-100" v-if="selectedCardIndex !== index">
-            <img class="img-fluid h-100" :src="`https://image.tmdb.org/t/p/w342/${multiData.poster_path}`" alt="">
+            <img v-if="multiData.poster_path" class="img-fluid h-100" :src="`https://image.tmdb.org/t/p/w342/${multiData.poster_path}`" alt="">
+            <img v-else class="img-fluid h-100 w-100" src="../assets/img/posternotfound.png" alt="">
         </div>
         <div class="info" v-if="selectedCardIndex === index">
             <div class="title">
