@@ -111,6 +111,7 @@ export default {
       this.getSeries(),
       store.titleUpdate = false
       store.onlySelectedGenere = false,
+      store.selectedSeries = false
       store.containerOverflow = 'hidden', 
       store.rowFlexWrap = 'nowrap'
     }
