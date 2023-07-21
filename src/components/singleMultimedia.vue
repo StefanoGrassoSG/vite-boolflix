@@ -1,4 +1,6 @@
 <script >
+import { hide } from '@popperjs/core';
+
 export default {
   data() {
     return {
@@ -35,17 +37,19 @@ export default {
         return Math.floor(vote.vote_average / 2);
     },
     showInfo(index) {
-        this.selectedCardIndex = index;
-    },
-    hideInfo() {
-      this.selectedCardIndex = -1;
+        if(this.selectedCardIndex !== index) {
+            this.selectedCardIndex = index;
+        }
+        else {
+            this.selectedCardIndex = -1
+        }
     }
   }
 }
 </script>
 
 <template>
-   <div class="single-card bg-white h-100" @mouseenter="showInfo(index)" @mouseleave="hideInfo()">
+   <div class="single-card bg-white h-100" @click="showInfo(index)">
         <div class="img h-100" v-if="selectedCardIndex !== index">
             <img class="img-fluid h-100" :src="`https://image.tmdb.org/t/p/w342/${multiData.poster_path}`" alt="">
         </div>

@@ -124,9 +124,6 @@ export default {
 
   <MainComponent @close="closeDrop"/>
 
-  <footer>
-    FOOTER
-  </footer>
 </template>
 
 <style lang="scss">
