@@ -105,6 +105,14 @@ export default {
       if(this.store.drop == true) {
         this.store.drop = false
       }
+    },
+    backToMain() {
+      this.getMovies(),
+      this.getSeries(),
+      store.titleUpdate = false
+      store.onlySelectedGenere = false,
+      store.containerOverflow = 'hidden', 
+      store.rowFlexWrap = 'nowrap'
     }
   },
   components: {
@@ -120,7 +128,7 @@ export default {
 
 <template>
 
-  <HeaderComponent @filter="getFilterResult" @getGenere="getGenere"/>
+  <HeaderComponent @filter="getFilterResult" @getGenere="getGenere" @mainMenu="backToMain"/>
 
   <MainComponent @close="closeDrop"/>
 

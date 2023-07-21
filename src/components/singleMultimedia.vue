@@ -112,14 +112,21 @@ export default {
     .single-card {
     border: 5px solid black;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
     .info {
         padding: 10px 10px 0px 10px;
         overflow: hidden;
         text-overflow: ellipsis;
         display: -webkit-box;
-        -webkit-line-clamp: 10; /* Imposta il numero massimo di righe desiderato */
+        -webkit-line-clamp: 10; 
         -webkit-box-orient: vertical;
     }
+}
+
+.single-card:hover {
+    transform: scale(1.2);
+    filter: brightness(120%);
 }
 }
 </style>

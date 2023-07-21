@@ -50,17 +50,6 @@ export default {
                     </div>
                 </div>
             </div>
-
-            <div class="blur-row">
-                <h2>
-                     Movies
-                </h2>
-                <div class="row" :style="{ flexWrap: this.store.rowFlexWrap }">
-                    <div class="col-2" v-for="(singleMovie, i) in store.movies" :key="i">
-                        <singleMultimedia :multiData="singleMovie" :index="i"/>
-                    </div>
-                </div>
-            </div>
         </div>
     </main>
 </template>
@@ -72,11 +61,6 @@ export default {
      
     .row {
         flex-wrap: nowrap;
-        margin-bottom: 60px;
-    }
-
-    .blur-row {
-        filter: blur(10px);
         margin-bottom: 60px;
     }
 }

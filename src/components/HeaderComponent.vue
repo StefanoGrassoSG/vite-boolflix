@@ -21,7 +21,7 @@ export default {
                 <div class="col-12 d-flex justify-content-between align-items-center">
                     <div class="col-auto">
                         <div class="logo-container d-flex align-items-center">
-                            <img class="img-fluid" src="../assets/img/logovero.png" alt="">
+                            <img class="img-fluid logo" @click="$emit('mainMenu')" src="../assets/img/logovero.png" alt="">
                             <div>
                                 <div @click="$emit('getGenere')" class="browse text-danger d-flex align-items-center">
                                     <div class="fs-2 ms-4">
@@ -62,6 +62,15 @@ header {
         .logo-container {
             width: 250px;
 
+            .logo {
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+            }
+
+            .logo:hover{
+                transform: scale(1.1);
+                filter: brightness(110%);
+            }
             .browse {
                 cursor: pointer;
                 user-select: none;
